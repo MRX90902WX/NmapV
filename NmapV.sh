@@ -17,7 +17,7 @@ read url
 echo ""
 setterm -foreground cyan
 echo "-------------------------------------------------"
-echo "nmap -Pn -script vuln" $url
+echo "└─> nmap -Pn -script vuln" $url
 echo "-------------------------------------------------"
 echo ""
 echo -e "\e[1;35m[+]\e[0m\e[1;33mBuscando vulnerabilidades espere un momento...\e[0m"
