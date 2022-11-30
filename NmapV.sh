@@ -29,7 +29,7 @@ sleep 1
 echo -e "\e[1;33mInstalando\e[0m \e[1;34mnmap ...\e[0m"
 sleep 3
 setterm -foreground blue
-pkg install nmap
+pkg install nmap -y
 fi
 
 clear
