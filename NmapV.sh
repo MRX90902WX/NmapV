@@ -33,6 +33,10 @@ pkg install nmap -y
 fi
 
 clear
+setterm -foreground cyan
+figlet -f small NmapV
+setterm -foreground green
+sleep 1
 setterm -foreground red
 echo "                    v.1.9"
 echo ""
