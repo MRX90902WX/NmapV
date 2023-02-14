@@ -33,44 +33,58 @@ pkg install nmap -y
 fi
 
 clear
-setterm -foreground cyan
-figlet -f small NmapV
-setterm -foreground green
-sleep 2
 setterm -foreground red
-echo "                    v.1.7"
+echo "                    v.1.9"
 echo ""
 setterm -foreground green
 echo "ESTA SCRIPT ES PARA ENCONTRAR VULNERABILIDADES EN LA PAGINA DEL OBJETIVO"
 sleep 1
 echo ""
-echo -e -n "\e[1;35m[+]\e[0m\e[1;33mEscriba la url de la victima ej:(facebook.com)\e[0m \e[1;32m>> \e[0m"
+echo -e "\e[1;34m[+]Escriba el dominio de la pagina ej:(facebook.com)\e[0m"
+echo -e -n "\e[1;32m >>\e[0m \e[1;37m\e[0m"
 read url
 echo ""
 setterm -foreground cyan
-echo "-------------------------------------------------"
+echo "-----------------------------------------------"
 echo "└─> nmap -Pn -script vuln" $url
-echo "-------------------------------------------------"
+echo "-----------------------------------------------"
 echo ""
-echo -e "\e[1;35m[+]\e[0m\e[1;33mBuscando vulnerabilidades espere un momento...\e[0m"
+while :
+do
+setterm -foreground green
+echo "[1]Desea guardar las vulnerabilidades en un archivo txt"
+echo "[2]No guardar"
+echo -n "[~]Opcion >> "
+read opcion
+case $opcion in
+1)
+echo ""
+#! /bin/bash
+echo -e -n "\e[1;31m[~]Nombre del archivo txt ej:(scan)>> \e[0m"
+read archivo
+echo ""
+echo -e "\e[1;37m[#]Guardando vulnerabilidades espere un momento...\e[0m"
 
 #Esta funcion hace que al ejecutarse nmap -Pn -script vuln $url busque la vulnerabilidad de la misma
 setterm -foreground green
 sleep 1
 echo ""
-nmap -Pn -script vuln $url
-
-#Una vez ejecutado se copia lo vulnerable
+nmap -Pn -script vuln $url > $archivo.txt
 echo ""
-echo -e "\e[1;35m[+]\e[0m\e[1;33mCopie la vulnerabilidad si la encontro ej:(cve2014-3704)\e[0m"
+exit
+;;
+2)
+echo ""
+#! /bin/bash
+echo -e "\e[1;37m[#]Buscando vulnerabilidades espere un momento...\e[0m"
+
+#Esta funcion hace que al ejecutarse nmap -Pn -script vuln $url busque la vul>
+setterm -foreground green
 sleep 1
 echo ""
-setterm -foreground cyan
-echo -n "/////Ejecutando metasploit framework\\\\\\"
+nmap -Pn -script vuln $url
 echo ""
-#Esta funcion hace que despues de ejecutarse nmap -Pn -script vuln $url se ejecute metasploit
-msfconsole
-
-#Salir de la script NmapV
-echo -e "\e[1;32mGracias por utilizar esta script Adios\e[0m"
-#
+exit
+;;
+esac
+done
