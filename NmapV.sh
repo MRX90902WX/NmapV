@@ -40,7 +40,6 @@ sleep 1
 setterm -foreground red
 echo "                    v.1.9"
 echo ""
-echo ""
 setterm -foreground green
 echo "ESTA SCRIPT ES PARA ENCONTRAR VULNERABILIDADES EN LA PAGINA DEL OBJETIVO"
 sleep 1
