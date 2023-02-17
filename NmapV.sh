@@ -106,6 +106,7 @@ echo ""
 echo "=============================================="
 nmap -Pn -script vuln $url
 echo ""
+exit
 ;;
 esac
 done
