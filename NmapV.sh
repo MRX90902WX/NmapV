@@ -62,13 +62,12 @@ setterm -foreground green
 echo "ESTA SCRIPT ES PARA ENCONTRAR VULNERABILIDADES EN LA PAGINA DEL OBJETIVO"
 sleep 1
 echo ""
-echo -e "\e[1;34m[+]Escriba el dominio de la pagina ej:(facebook.com)\e[0m"
-echo -e -n "\e[1;32m >>\e[0m \e[1;37m\e[0m"
+echo -e -n "\e[1;34m[+]Escriba la IP Objetivo >>\e[0m \e[1;32m\e[0m"
 read url
 echo ""
 setterm -foreground cyan
 echo "-----------------------------------------------"
-echo "└─> nmap -Pn -script vuln" $url
+echo "└─> nmap -sV -sC --script vuln $url"
 echo "-----------------------------------------------"
 echo ""
 while :
@@ -87,11 +86,11 @@ read archivo
 echo ""
 echo -e "\e[1;37m[#]Guardando vulnerabilidades espere un momento...\e[0m"
 
-#Esta funcion hace que al ejecutarse nmap -Pn -script vuln $url busque la vulnerabilidad de la misma
+#Esta funcion hace que al ejecutarse nmap -sV -sC --script vuln $url busque la vulnerabilidad de la IP
 setterm -foreground green
 sleep 1
 echo ""
-nmap -Pn -script vuln $url > $archivo.txt
+nmap -sV -sC --script vuln $url > $archivo.txt
 echo ""
 exit
 ;;
@@ -100,11 +99,11 @@ echo ""
 #! /bin/bash
 echo -e "\e[1;37m[#]Buscando vulnerabilidades espere un momento...\e[0m"
 
-#Esta funcion hace que al ejecutarse nmap -Pn -script vuln $url busque la vulerabilidad del dominio
+#Esta funcion hace que al ejecutarse nmap -sV -sC --script vuln $url busque la vulerabilidad de la IP
 sleep 1
 echo ""
 echo "=============================================="
-nmap -Pn -script vuln $url
+nmap -sV -sC --script vuln $url
 echo ""
 exit
 ;;
